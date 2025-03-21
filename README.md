@@ -1,5 +1,4 @@
-# Food-Basket
-# REST API for an Online Food Delivery Application
+# Food-Basket- Online Food Delivery Application
 
 * A SpringBoot project which provides REST API for an Online Food Delivery application. This API performs all the fundamental CRUD operations of any Online Food Delivery platform with user validation at every step.
 
