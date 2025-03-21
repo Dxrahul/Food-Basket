@@ -1,57 +1,141 @@
-# Food-Basket- Online Food Delivery Application
+# Food Basket - Online Food Delivery App
 
-* A SpringBoot project which provides REST API for an Online Food Delivery application. This API performs all the fundamental CRUD operations of any Online Food Delivery platform with user validation at every step.
+**Food Basket** is an online food delivery application that allows users to browse, order, and manage food items from various categories. The app is built with a modern tech stack, featuring **React Vite** for the frontend and **Java Spring Boot** for the backend. This repository contains the frontend code for the application. The backend uses **MongoDB** as the database for storing data.
+
+---
+
+## Features
+
+- **Home Page: Displays featured food items, categories, and a search bar for easy navigation.
+- **User Authentication**: Users can sign up, log in, and manage their accounts.
+- **Food Categories**: Browse food items by categories such as Pizza, Burgers, Icecream,Briyani etc.
+- **Search Functionality**: Search for specific food items by name.
+- **Cart Management**: Add, remove, and update quantities of food items in the cart.
+- **Order Summary**: View subtotal, shipping, tax, and total cost before placing an order
+
+---
 
 ## Tech Stack
 
-* Java
-* Spring Framework
-* Spring Boot
-* Spring Data JPA
-* Hibernate
-* MySQL
+### Frontend
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A fast build tool for modern web development.
+- **React Router**: For handling client-side routing.
+- **Context API**: For state management across components.
+- **Bootstrap**: For styling and responsive design.
+- **Axios**: For making HTTP requests to the backend.
 
-## Modules
+### Backend
+- **Java Spring Boot**: A robust framework for building RESTful APIs.
+- **Spring Security**: For handling authentication and authorization.
+- **JWT (JSON Web Tokens)**: For secure user authentication.
+- **MongoDB**: A NoSQL database for storing application data.
+- **Razorpay API**: For payment integration.
 
-* Signup, Login/Logout Module
-* Restaurant Module
-* Customer Module
-* Order and Items Module
-* Bill Module
-   
-## Features
+---
 
-* Customer and Admin authentication & validation with session uuid.
-* Admin Features:
-    * Administrator Role of the entire application
-    * Only registered admins with valid session token can add/update/delete restaurants or customer from main database
-    * Admin can access the details of different customers, restaurants and orders
-* Customer Features:
-    * Registering themselves with application, and logging in to get the valid session token
-    * Viewing list of available items and ordering it
-    * Only logged in users view cart details, place an order, update and access other features
-    
- 
-* Update the port number, username and password as per your local database config.
+## Installation
 
+### Prerequisites
+- **Node.js**: Ensure you have Node.js installed (v14.18).
+- **Java**: Ensure you have Java installed (JDK 21).
+- **MongoDB**: Set up a MongoDB database for the backend.
+
+### Frontend Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Dxrahul/food-basket.git
+   cd food-basket/frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`.
+
+### Backend Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd food-basket/backend
+   ```
+
+2. Configure the `application.properties` file with your MongoDB connection details:
+   ```properties
+   spring.data.mongodb.uri=mongodb://localhost:27017/foodbasket
+   ```
+
+3. Build and run the Spring Boot application:
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+
+4. The backend will start on `http://localhost:8080`.
+
+---
+
+## Project Structure
+
+### Frontend
 ```
-    server.port=8080
-
-    spring.datasource.url=jdbc:mysql://localhost:3306/foodBasket;
-    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-    spring.datasource.username=root
-    spring.datasource.password=root
-
+src/
+├── assets/              # Static assets (images, icons, etc.)
+├── components/          # Reusable components (Header, Footer, etc.)
+├── context/             # Context API for global state management
+├── pages/               # Main pages (Home, Login, Register, etc.)
+├── service/             # API service calls
+├── App.jsx              # Main application component
+├── main.jsx             # Entry point for the app
 ```
 
-## API Root Endpoint
+### Backend
+```
+src/
+├── main/
+│   ├── java/
+│   │   └── com/
+│   │       └── foodbasket/
+│   │           ├── controller/    # REST controllers
+│   │           ├── model/         # Entity classes
+│   │           ├── repository/    # Data access layer (MongoDB repositories)
+│   │           ├── service/       # Business logic
+│   │           └── config/        # Configuration classes
+│   └── resources/
+│       └── application.properties # Configuration file
+```
 
-`https://localhost:8008/`
 
-`http://localhost:8008/swagger-ui.html`
+## API Endpoints
 
-### Sample API Response for Customer Login
+### Authentication
+- **POST /api/auth/login**: User login.
+- **POST /api/auth/register**: User registration.
 
-`POST   localhost:8008/login`
+### Food Items
+- **GET /api/foods**: Get all food items.
+- **GET /api/foods/{id}**: Get a specific food item by ID.
 
+### Cart
+- **GET /api/cart**: Get the user's cart.
+- **POST /api/cart/add**: Add an item to the cart.
+- **PUT /api/cart/update**: Update the quantity of an item in the cart.
+- **DELETE /api/cart/remove/{id}**: Remove an item from the cart.
 
+### Orders
+- **POST /api/orders/place**: Place an order.
+---
+
+## Acknowledgments
+
+- **Vite**: For providing a fast and modern build tool.
+- **Spring Boot**: For simplifying backend development.
+- **MongoDB**: For providing a flexible NoSQL database.
+- **Bootstrap**: For making responsive design easy.
+
+Enjoy using **Food Basket**! 🍕🍔🍣
